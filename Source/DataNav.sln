@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataNav", "DataNav\DataNav.csproj", "{48C3B933-A0E6-0AF6-731C-0DF2D38EC19B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48C3B933-A0E6-0AF6-731C-0DF2D38EC19B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C3B933-A0E6-0AF6-731C-0DF2D38EC19B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C3B933-A0E6-0AF6-731C-0DF2D38EC19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C3B933-A0E6-0AF6-731C-0DF2D38EC19B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68F3CA94-DB78-48DB-B87E-EAA64D912414}
+	EndGlobalSection
+EndGlobal

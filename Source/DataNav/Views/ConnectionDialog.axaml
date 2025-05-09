@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="500"
+        x:Class="DataNav.Views.ConnectionDialog"
+        Title="Add Database Connection"
+        Width="450" Height="500"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Database Connection" FontSize="20" FontWeight="Bold" Margin="0 0 0 20"/>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Spacing="10">
+                <!-- Connection Name -->
+                <TextBlock Text="Connection Name" FontWeight="Bold"/>
+                <TextBox x:Name="ConnectionNameTextBox" Watermark="e.g. Development Cassandra"/>
+
+                <!-- Connection Type -->
+                <TextBlock Text="Database Type" FontWeight="Bold" Margin="0 10 0 0"/>
+                <ComboBox x:Name="ProviderTypeComboBox" SelectedIndex="0" HorizontalAlignment="Stretch">
+                    <ComboBoxItem>Cassandra</ComboBoxItem>
+                    <ComboBoxItem IsEnabled="False">PostgreSQL (Coming Soon)</ComboBoxItem>
+                    <ComboBoxItem IsEnabled="False">SQL Server (Coming Soon)</ComboBoxItem>
+                    <ComboBoxItem IsEnabled="False">MySQL (Coming Soon)</ComboBoxItem>
+                </ComboBox>
+
+                <!-- Server Settings -->
+                <TextBlock Text="Server Settings" FontWeight="Bold" Margin="0 10 0 0"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="HostTextBox" Watermark="Hostname or IP Address" Text="localhost"/>
+                    <TextBox Grid.Column="1" x:Name="PortTextBox" Watermark="Port" Text="9042" Margin="5 0 0 0"/>
+                </Grid>
+
+                <!-- Authentication -->
+                <TextBlock Text="Authentication" FontWeight="Bold" Margin="0 10 0 0"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="UsernameTextBox" Watermark="Username" Margin="0 0 5 0"/>
+                    <TextBox Grid.Column="1" x:Name="PasswordTextBox" Watermark="Password" PasswordChar="*" Margin="5 0 0 0"/>
+                </Grid>
+
+                <!-- Advanced Options -->
+                <Expander Header="Advanced Options" Margin="0 10 0 0">
+                    <StackPanel Spacing="10" Margin="0 10 0 0">
+                        <CheckBox x:Name="SslCheckBox" Content="Use SSL/TLS"/>
+                        <TextBlock Text="Connection Timeout (ms)"/>
+                        <TextBox x:Name="TimeoutTextBox" Text="5000"/>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0 20 0 0">
+            <Button x:Name="TestButton" Content="Test Connection" Width="120"/>
+            <Button x:Name="SaveButton" Content="Save" Width="80"/>
+            <Button x:Name="CancelButton" Content="Cancel" Width="80"/>
+        </StackPanel>
+    </Grid>
+</Window>

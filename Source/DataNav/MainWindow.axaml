@@ -1,0 +1,99 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:DataNav.ViewModels"
+        xmlns:local="using:DataNav"
+        xmlns:dg="using:Avalonia.Controls.DataGrid"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
+        x:Class="DataNav.MainWindow"
+        Title="DataNav - Database Explorer"
+        Icon="/Assets/space-monkey.ico"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <Style Selector="TabItem">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" MinWidth="200" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Panel - Database Tree -->
+        <Grid Grid.Column="0" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Database Connection Controls -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 0 0 5">
+                <Button x:Name="AddConnectionButton" Content="+" Width="30" Height="30" Margin="0 0 5 0"/>
+                <Button x:Name="RefreshButton" Content="⟳" Width="30" Height="30" Margin="0 0 5 0"/>
+                <Button x:Name="SettingsButton" Content="⚙" Width="30" Height="30"/>
+            </StackPanel>
+
+            <!-- Server/Database TreeView -->
+            <TreeView Grid.Row="1" x:Name="DatabaseTreeView" Margin="0 5 0 0">
+                <!-- TreeView items will be populated programmatically -->
+            </TreeView>
+        </Grid>
+
+        <!-- Splitter -->
+        <GridSplitter Grid.Column="1" Width="5" Background="#CCCCCC" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+        <!-- Right Panel - Content Area -->
+        <Grid Grid.Column="2" Margin="5">
+            <TabControl x:Name="ContentTabControl">
+                <!-- Tabs will be added programmatically -->
+                <TabItem Header="Welcome">
+                    <Grid>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="DataNav" FontSize="32" FontWeight="Bold"/>
+                            <TextBlock Text="Cross-Platform Database Explorer" FontSize="16" Margin="0 5 0 20"/>
+                            <Button Content="Connect to Database" HorizontalAlignment="Center" Padding="15 8"/>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="users">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Data Grid Toolbar -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 0 0 5">
+                            <Button Content="Execute Query" Margin="0 0 5 0"/>
+                            <Button Content="Export Data" Margin="0 0 5 0"/>
+                            <Button Content="Filter" Margin="0 0 5 0"/>
+                        </StackPanel>
+
+                        <!-- Data Grid -->
+                        <DataGrid Grid.Row="1" x:Name="DataGrid" AutoGenerateColumns="True">
+                            <!-- Will be populated programmatically -->
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Structure">
+                    <Grid>
+                        <ListBox>
+                            <ListBoxItem>id (uuid) - Primary Key</ListBoxItem>
+                            <ListBoxItem>username (text)</ListBoxItem>
+                            <ListBoxItem>email (text)</ListBoxItem>
+                            <ListBoxItem>created_date (timestamp)</ListBoxItem>
+                        </ListBox>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>
